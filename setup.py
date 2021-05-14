@@ -21,7 +21,9 @@ setup_args = dict(
 )
 
 
-install_requires = []
+install_requires = [
+    'simplestr'
+]
 
 
 if __name__ == '__main__':
