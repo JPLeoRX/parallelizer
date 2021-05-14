@@ -10,12 +10,11 @@ class Executor:
         self.worker_index = worker_index
         self.tasks = tasks
 
-    def execute_all(self, executor_event: ExecutorEvent) -> List[Result]:
+    def execute_all(self, executor_event: ExecutorEvent) -> None:
         results = []
         for task in self.tasks:
             results.append(self._execute_single(task))
         executor_event.save_results(results)
-        return results
 
     def _execute_single(self, task: Task) -> Result:
         return Result(task.task_index, task.execute())

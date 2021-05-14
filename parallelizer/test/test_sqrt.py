@@ -11,7 +11,7 @@ inputs = list(range(1, 11))
 
 # Test threads
 t1 = time.time()
-prlz = ThreadParallelizer(4)
+prlz = ThreadParallelizer(10)
 results = prlz.execute(power_function, [inputs, [2 for i in inputs]])
 t2 = time.time()
 print(inputs)
@@ -20,7 +20,7 @@ print('Execution time:', t2 - t1)
 
 # Test process
 t1 = time.time()
-prlz = ProcessParallelizer(4)
+prlz = ProcessParallelizer(10)
 results = prlz.execute(power_function, [inputs, [2 for i in inputs]])
 t2 = time.time()
 print(inputs)
