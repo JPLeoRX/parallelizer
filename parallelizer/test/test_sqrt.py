@@ -1,28 +1,37 @@
 import time
 from parallelizer.thread_parallelizer import ThreadParallelizer
 from parallelizer.process_parallelizer import ProcessParallelizer
+from parallelizer.tools import repeat
 
 
 def power_function(base: int, power: int) -> int:
-    time.sleep(1)
+    #time.sleep(1)
     return base ** power
 
-inputs = list(range(1, 11))
 
-# Test threads
-t1 = time.time()
-prlz = ThreadParallelizer(10)
-results = prlz.execute(power_function, [inputs, [2 for i in inputs]])
-t2 = time.time()
-print(inputs)
-print(results)
-print('Execution time:', t2 - t1)
+inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+number_of_workers = 1
 
-# Test process
-t1 = time.time()
-prlz = ProcessParallelizer(10)
-results = prlz.execute(power_function, [inputs, [2 for i in inputs]])
-t2 = time.time()
-print(inputs)
-print(results)
-print('Execution time:', t2 - t1)
+
+def test_thread_parallelizer():
+    t1 = time.time()
+    prlz = ThreadParallelizer(number_of_workers)
+    results = prlz.execute(power_function, [inputs, repeat(2, len(inputs))])
+    t2 = time.time()
+    print(inputs)
+    print(results)
+    print('test_thread_parallelizer(): Execution time:', t2 - t1)
+
+
+def test_process_parallelizer():
+    t1 = time.time()
+    prlz = ProcessParallelizer(number_of_workers)
+    results = prlz.execute(power_function, [inputs, repeat(2, len(inputs))])
+    t2 = time.time()
+    print(inputs)
+    print(results)
+    print('test_process_parallelizer(): Execution time:', t2 - t1)
+
+
+test_thread_parallelizer()
+test_process_parallelizer()
