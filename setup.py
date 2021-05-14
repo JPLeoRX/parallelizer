@@ -8,7 +8,7 @@ with open("README.md", "r") as readme_file:
 setup_args = dict(
     name='parallelizer',
     version='0.1',
-    description="Parallel execution of your tasks simplified! Analog to concurrent.futures executors",
+    description="Parallel execution of your tasks simplified! Analog to concurrent.futures executors.",
     keywords=['executor', 'thread', 'process', 'parallel', 'multiprocessing', 'multithreading'],
     long_description=readme_text,
     long_description_content_type="text/markdown",

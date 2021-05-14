@@ -5,12 +5,12 @@ from parallelizer.tools import repeat
 
 
 def power_function(base: int, power: int) -> int:
-    #time.sleep(1)
+    time.sleep(1)
     return base ** power
 
 
 inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-number_of_workers = 1
+number_of_workers = 5
 
 
 def test_thread_parallelizer():
