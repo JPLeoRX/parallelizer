@@ -14,8 +14,7 @@ class Executor:
         results = []
         for task in self.tasks:
             results.append(self._execute_single(task))
-        executor_event.results = results
-        executor_event.event.set()
+        executor_event.save_results(results)
         return results
 
     def _execute_single(self, task: Task) -> Result:
